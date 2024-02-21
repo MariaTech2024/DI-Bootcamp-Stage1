@@ -1,0 +1,13 @@
+body{
+    background-color: #39ace6c5;
+}
+
+ol::first-letter{
+    font-size: 2em;
+}
+.center-both {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}   
