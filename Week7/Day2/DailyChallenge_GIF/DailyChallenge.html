@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIF</title>
+    <style>
+        #gifContainer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    .gifElement {
+        position: relative;
+        width: 200px;
+        height: auto;
+        overflow: hidden;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    }
+    .gifElement img {
+        width: 100%;
+        height: auto;
+    }
+    .delete:hover {
+        background-color: rgba(79, 15, 105, 0.8);
+    }
+</style>
+</head>
+<body>
+<!--In the HTML file, add a form, containing an input and a button. This input is used to fetch gif depending on a specific category.-->
+<form id="gifForm">
+    <input type="text" id="category" placeholder="Enter gif category">
+    <button type="submit">Fetch Gif</button>
+</form>
+<!--Allow the user to remove all of the GIFs by clicking a DELETE ALL button.-->
+<button id="deleteAll">DELETE ALL</button>
+
+<div id="gifContainer"></div>
+
+<script src="DailyChallenge.js"></script>    
+</body>
+</html>
