@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Wars Web App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="logo-container">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Star_Wars_Logo.svg/1041px-Star_Wars_Logo.svg.png" height="200" width="350" alt="star wars logo">
+    </div>
+    <div class="container">
+        <div class="character-info">
+            <h2 id="name"></h2>
+            <p id="height">Height: </p>
+            <p id="gender">Gender: </p>
+            <p id="birth-year">Birth Year: </p>
+            <p id="home-world">Home World: </p>
+        </div>
+    
+        <div id="loading-message" class="hidden">
+            <i class="fa-solid fa-spinner fa-spin"></i> Loading...
+        </div>
+        <div id="error" class="hidden">
+            Oh no! That person isn't available.
+        </div>
+    </div>
+    <button id="fetch-character">Fetch Character</button>
+<script src="script.js"></script>
+</body>
+</html>
