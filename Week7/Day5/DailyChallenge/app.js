@@ -3,89 +3,47 @@
 //The game will keep track of the player’s score and provide feedback on their guesses.
 
 const express = require('express');
-const { getResults, setResults } = require('./file.js');
-const { emojiArray } = require('./data.js');
-
 const app = express();
-app.use(express.json());
+
 app.use(express.static('public'));
-//To get the list of emojis
-app.get('/emojis', (req, res) => {
-    //Map each emoji to an object containing its ID, character, and names
-    const emojis = emojiArray.map(emoji => {
-        //Create a new array with the wrong names and add the correct name
-        const names = [...emoji.wrongNames];
-        const { id, character } = emoji;
-//Add the correct name and sort the array alphabetically
-        names.push(emoji.shortName);
-        names.sort();
+app.use(express.json()); // using built-in Express JSON middleware
 
-        return {
-            id,
-            character,
-            names
-        }
-    });
-//If emojis are found, send them as a response
-    if (emojis) {
-        res.status(200).json(emojis);
+const emojis = [
+    {emoji: "😀", name: "smiling"},
+    {emoji: "😂", name: "laughing"},
+    {emoji: "😍", name: "smiling_heart"},
+    {emoji: "😎", name: "sunglasses"},
+    {emoji: "😋", name: "tasty"},
+    {emoji: "🤔", name: "thinking"},
+    {emoji: "😴", name: "sleeping"},
+    {emoji: "🥳", name: "partying"},
+    {emoji: "🤩", name: "amazing"},
+    {emoji: "🤯", name: "exploding_head"}
+];
+
+//Function to get random options for the game
+function getRandomOptions(n) {
+    const shuffled = [...emojis].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, n);
+}
+//API endpoint to get a random emoji and options for guessing
+app.get('/emoji', (req, res) => {
+    const options = getRandomOptions(4);
+    const randomEmoji = options[Math.floor(Math.random() * options.length)];
+    res.json({ emoji: randomEmoji.emoji, options: options.map(opt => opt.name) });
+});
+//API endpoint to submit a guess and check if it is correct
+app.post('/guess', (req, res) => {
+    const { guess, emoji } = req.body;//Extract guess and emoji from the request body
+    const correctEmoji = emojis.find(e => e.emoji === emoji);//Find the correct emoji object
+    if (correctEmoji && correctEmoji.name === guess) {
+        res.json({ correct: true, message: "Correct!" });
     } else {
-        //If emojis are not found, send an error response
-        res.status(500).json('something went wrong');
+        res.json({ correct: false, message: "Wrong!", correctName: correctEmoji ? correctEmoji.name : "" });//Incorrect guess
     }
-})
-//Guessing the name of an emoji
-app.post('/emojis/:id', (req, res) => {
-    //Extract the name from the request body and the ID from the URL params
-    const { name } = req.body;
-    let { id } = req.params;
-    id = Number(id);
-    //Find the emoji object with the given ID
-    const emojiObj = emojiArray.find(emoji => emoji.id == id);
-    if (!emojiObj) {
-        res.status(404).json({ error: 'emoji not found' });
-        return;
-    }
-    const { shortName } = emojiObj;
-//Check if the guessed name matches the correct name of the emoji
-    if (shortName === name) {
-        res.status(200).json({ isTrue: true });
-    } else {
-        res.status(200).json({ isTrue: false });
     }
 });
-//Update leaderboard results
-app.put('/results', async (req, res) => {
-    const { dateTime, score } = req.body;
-    //Retrieve current results from file
-    const results = await getResults();
 
-    if (!results) {
-        console.log('results are ', results);
-        res.status(500).json({ error: 'wrong data' });
-        return;
-    }
-//Add new result to results array and sort by score
-    results.push({ dateTime, score });
-    results.sort((res1, res2) => res2.score - res1.score);
-//Write updated results to file
-    const success = await setResults(results);
-    if (success) {
-        res.status(201).json({ added: { dateTime, score } });
-    } else {
-        res.status(500).json({ error: 'error during writing json file' });
-    }
+app.listen(3002, () => {
+    console.log(`Server is running on http://localhost:3002`);
 });
-//Get leaderboard results
-app.get('/results', async (req, res) => {
-    //Retrieve results from file
-    const results = await getResults();
-    if (!results) {
-        console.log('results are ', results);
-        res.status(500).json({ error: 'wrong data' });
-        return;
-    }
-    res.status(200).json(results);
-})
-
-app.listen(4000, () => console.log('listen to port 4000'));
