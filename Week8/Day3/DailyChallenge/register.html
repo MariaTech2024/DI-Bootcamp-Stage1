@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        input:invalid + span {
+            display: block;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h2>Register</h2>
+    <form id="registerForm">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" required>
+            <span>Please enter your name.</span>
+        </div>
+        <div>
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" required>
+            <span>Please enter your last name.</span>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+            <span>Please enter a valid email address.</span>
+        </div>
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" required>
+            <span>Please enter a username.</span>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" required>
+            <span>Please enter a password.</span>
+        </div>
+        <button type="submit" id="registerBtn" disabled>Register</button>
+    </form>
+    <div id="message"></div>
+
+    <script>
+        document.getElementById("registerForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const name = document.getElementById("name").value;
+            const lastName = document.getElementById("lastName").value;
+            const email = document.getElementById("email").value;
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            fetch('/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name, lastName, email, username, password })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to register');
+                }
+                return response.json();
+            })
+            .then(data => {
+                document.getElementById("message").innerText = data.message;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById("message").innerText = 'Failed to register';
+            });
+        });
+
+        document.querySelectorAll("input").forEach(function(input) {
+            input.addEventListener("input", function() {
+                const form = document.getElementById("registerForm");
+                const isValid = form.checkValidity();
+                document.getElementById("registerBtn").disabled = !isValid;
+            });
+        });
+    </script>
+</body>
+</html>
