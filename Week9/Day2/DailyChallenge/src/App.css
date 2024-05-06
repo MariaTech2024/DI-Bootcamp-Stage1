@@ -1,0 +1,58 @@
+.app-container {
+  width: 500px;
+  margin: 40px auto;
+  background-color: rgb(195, 221, 243);
+  display: flex;
+  flex-direction: column;
+  padding: 10px; /* Added padding around the container */
+  border-radius: 8px; /* Optional: Add rounded corners */
+  border: 1px solid #ccc; /* Optional: Add a border */
+}
+
+h1 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center; /* Center-align the header text */
+}
+
+
+/* Language list styling */
+.language-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Language item styling */
+.language-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid black;
+  margin-bottom: 5px; 
+  padding: 5px; 
+  font-size: 14px; 
+  border-radius: 4px; 
+  background-color: white; 
+  color: #333; 
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); 
+}
+
+.language-votes {
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+/* Vote button styling */
+.vote-button {
+  border: none;
+  color: green;
+  background-color: aliceblue;
+  margin-right: 20px;
+  padding: 2px 6px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+  text-align: center; /* Center-align the button text */
+}
