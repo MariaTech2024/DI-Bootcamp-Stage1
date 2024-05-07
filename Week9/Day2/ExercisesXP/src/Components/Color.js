@@ -1,24 +1,20 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 
-const Color = (props) => {
-    const [favoriteColor, setFavoriteColor] = useState('red')
-
+const Color = () => {
+    const [favoriteColor, setFavoriteColor] = useState('red');
+   
     useEffect(() => {
-        alert('useEffect reached');
-        setFavoriteColor('yellow')
-    }, [])
-
-    const changeColor = () => {
-        setFavoriteColor('blue')
-    }
+        alert("useEffect reached")
+        setFavoriteColor("yellow")
+    }, []
+    );
 
     return (
         <>
-            <header> My Favorite Color is {favoriteColor}</header>
-            <button onClick={changeColor}>Change Color</button>
+            <h1>My Favorite Color is <em>{favoriteColor}</em></h1>
+            <button onClick={()=>setFavoriteColor("blue")}>CLICK</button>
         </>
     )
 }
-
 export default Color;
