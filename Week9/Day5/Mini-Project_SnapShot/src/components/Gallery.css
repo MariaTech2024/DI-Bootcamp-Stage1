@@ -1,0 +1,23 @@
+/* Gallery.css */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Adjust to control the number of columns */
+    gap: 15px; /* Space between images */
+    margin: 20px;
+}
+
+.photo {
+    overflow: hidden;
+    border-radius: 10px; /* Add rounded corners to the images */
+    transition: transform 0.3s ease;
+}
+
+.photo img {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    transition: transform 0.3s ease;
+}
+
+.photo img:hover {
+    transform: scale(1.1); /* Enlarge the image on hover */
+}

@@ -1,0 +1,64 @@
+body {
+  margin: 0; /* Remove any default body margin */
+  height: 100vh; /* Make the body full-height */
+  display: flex; /* Use Flexbox */
+  justify-content: center; /* Center the calculator horizontally */
+  align-items: center; /* Center the calculator vertically */
+  background-color: #96d9f6; /* Optional: Add background color */
+}
+
+/* Style for the calculator container */
+.calculator-container {
+  padding: 20px; /* Add padding around the calculator */
+  width: 600px;
+  height: 350px;
+  color: #decafb;
+  background-color: #3e2374; /* White background for the calculator */
+  border-radius: 8px; /* Optional: Rounded corners */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Optional: Shadow */
+  text-align: center; /* Center the text inside the calculator */
+}
+
+/* Style for the input fields */
+.input-row {
+  display: flex;
+  justify-content: center;
+  gap: 50px; /* Space between input fields */
+  margin-bottom: 40px; /* Margin below the input fields */
+}
+
+.input-field {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #decff3; /* Light blue background color */
+  width: 150px; /* Optional: Set width for the inputs */
+  height: 30px;
+  font-size: 30px;
+  color: #3e2374;
+  text-align: center;
+}
+
+/* Style for the button */
+.button {
+  padding: 10px;
+  font-size: 18px;
+  width: 200px; /* Optional: Set the width of the button */
+  height: 50px; 
+  background-color: #5022d8; /* Blue background color */
+  border: none;
+  border-radius: 4px;
+  color: #e6e0f0; /* White text color */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Smooth transition for background color change */
+}
+
+.button:hover {
+  background-color: #1976d2; /* Darker blue background color on hover */
+}
+
+/* Style for the result */
+.result {
+  font-size: 50px; /* Increase the font size for the result */
+  font-weight: bold; /* Optional: Make the result text bold */
+}
