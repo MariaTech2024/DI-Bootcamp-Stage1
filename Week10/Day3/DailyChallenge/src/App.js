@@ -1,3 +1,5 @@
+//Daily Challenge: Planner Application using React-Redux
+
 import './App.css';
 import React from 'react';
 import Calendar from './components/Calendar';
