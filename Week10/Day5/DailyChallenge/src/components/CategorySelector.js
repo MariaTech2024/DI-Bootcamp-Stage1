@@ -1,35 +1,28 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { selectCategories } from '../features/selectors';
-import { addCategory, deleteCategory } from '../features/categorySlice';
 
-const CategorySelector = ({ selectedCategoryId, onCategorySelect }) => {
+
+//Component for selecting a category
+const CategorySelector = ({ selectedCategoryId, setSelectedCategoryId }) => {
+  //Get categories from Redux store
   const categories = useSelector(selectCategories);
-  const dispatch = useDispatch();
-
-  const handleAddCategory = () => {
-    const name = prompt('Enter category name:');
-    if (name) {
-      dispatch(addCategory({ id: Date.now(), name }));
-    }
-  };
-
-  const handleDeleteCategory = (categoryId) => {
-    dispatch(deleteCategory(categoryId));
-  };
 
   return (
     <div>
+      {/* Title */}
       <h2>Categories</h2>
-      <ul>
+      {/* Dropdown menu for selecting a category */}
+      <select value={selectedCategoryId || ''} onChange={e => setSelectedCategoryId(e.target.value)}>
+        {/* Default option */}
+        <option value="">Select a category</option>
+        {/* Map through categories and create an option for each */}
         {categories.map(category => (
-          <li key={category.id} onClick={() => onCategorySelect(category.id)}>
+          <option key={category.id} value={category.id}>
             {category.name}
-            <button onClick={() => handleDeleteCategory(category.id)}>Delete</button>
-          </li>
+          </option>
         ))}
-      </ul>
-      <button onClick={handleAddCategory}>Add Category</button>
+      </select>
     </div>
   );
 };

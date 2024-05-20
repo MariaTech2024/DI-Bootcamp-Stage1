@@ -1,8 +1,13 @@
-import { configureStore } from '@reduxjs/toolkit';
-import rootReducer from './features/rootReducer';
+import { configureStore } from '@reduxjs/toolkit'
+import taskReducer from './features/taskSlice';
+import categoryReducer from './features/categorySlice';
 
 const store = configureStore({
-  reducer: rootReducer
+  reducer: {
+    tasks: taskReducer,
+    categories: categoryReducer
+  },
+  
 });
 
 export default store;

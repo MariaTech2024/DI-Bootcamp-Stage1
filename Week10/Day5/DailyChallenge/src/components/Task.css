@@ -1,0 +1,35 @@
+/* Style for the container */
+.task-container {
+    margin: 20px;
+    margin-bottom: 20px;
+  }
+  
+  /* Style for the input field */
+  .task-input {
+    margin-bottom: 10px;
+    padding: 5px;
+    font-size: 16px;
+  }
+  
+  /* Style for the buttons */
+  .task-button {
+    margin-right: 5px;
+    padding: 5px 10px;
+    font-size: 14px;
+  }
+  
+  /* Style for the list */
+  .task-list {
+    list-style-type: none;
+  }
+  
+  /* Style for list items */
+  .task-item {
+    margin-bottom: 10px;
+  }
+  
+  /* Style for completed tasks */
+  .completed {
+    text-decoration: line-through;
+    color: red;
+  }

@@ -1,0 +1,47 @@
+/* Style for the container div */
+.category-container {
+    margin: 20px; /* Add margin for spacing */
+  }
+  
+  /* Style for the input field */
+  .category-input {
+    margin-bottom: 10px; /* Add bottom margin for spacing */
+    padding: 5px; /* Add padding for spacing */
+    font-size: 16px; /* Set font size */
+  }
+  
+  /* Style for the buttons */
+  .category-button {
+    margin-right: 5px; /* Add right margin for spacing between buttons */
+    padding: 5px 10px; /* Add padding for button size */
+    font-size: 14px; /* Set font size */
+  }
+  
+  /* Style for the list */
+  .category-list {
+    list-style-type: none; /* Remove default list styles */
+  }
+  
+  /* Style for list items */
+  .category-item {
+    margin-bottom: 10px; /* Add bottom margin for spacing between list items */
+  }
+  
+  /* Style for edit input and buttons */
+  .edit-category-container {
+    margin-bottom: 10px; /* Add bottom margin for spacing */
+  }
+  
+  /* Style for edit input */
+  .edit-category-input {
+    margin-bottom: 5px; /* Add bottom margin for spacing */
+    padding: 5px; /* Add padding for spacing */
+    font-size: 16px; /* Set font size */
+  }
+  
+  /* Style for edit buttons */
+  .edit-category-button {
+    margin-right: 5px; /* Add right margin for spacing between buttons */
+    padding: 5px 10px; /* Add padding for button size */
+    font-size: 14px; /* Set font size */
+  }
